@@ -1,0 +1,105 @@
+.stepper-section {
+  background-color: #FFFFFF;
+  padding: 60px 20px;
+}
+
+.stepper-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #FAF8F5;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #2C3E2D;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.divider {
+  height: 2px;
+  width: 60px;
+  background-color: #D4AF37;
+  margin: 0 auto 30px auto;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.step-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.confirm-action {
+  justify-content: space-between;
+}
+
+.summary-box {
+  background-color: #FFFFFF;
+  border: 1px solid #D4AF37;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.payment-info {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed #CCC;
+}
+
+form{
+    margin-top: 20px;
+}
+
+.info-warning {
+  background-color: #F4F7F4; /* Fondo verde muy suave */
+  border-left: 4px solid #8FA88F; /* Borde verde lateral */
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 4px;
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.info-warning p {
+  margin: 0 0 8px 0;
+}
+
+.info-warning p:last-child {
+  margin-bottom: 0;
+}
+
+/* Estilos para el campo compuesto de WhatsApp */
+.phone-input-group {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.select-code {
+  flex: 0 0 100px; /* Ancho fijo para el código de país */
+}
+
+.input-phone {
+  flex: 1; /* El input del número ocupa todo el espacio restante */
+}

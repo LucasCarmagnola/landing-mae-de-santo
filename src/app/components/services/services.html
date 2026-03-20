@@ -1,0 +1,59 @@
+<section class="services-section">
+  <div class="services-container">
+    
+    <h2 class="section-title">Consultas Online</h2>
+    <div class="divider"></div>
+
+    <div class="cards-grid">
+        
+        <div class="elegant-card diagnostico-espiritual">
+            <div class="card-icon">✦</div>
+            <h3 class="card-title">Diagnóstico Espiritual</h3>
+            <p class="card-subtitle">60 minutos • Online</p>
+            
+            <p class="card-description">
+            Evaluación profunda de bloqueos energéticos, caminos de vida y recomendación de procesos.
+            </p>
+            
+            <div class="price-box">
+            <span class="usd-price">USD {{ precioUsd }}</span>
+            <span class="ars-price" *ngIf="precioArs > 0">Aprox. ARS {{ precioArs | currency:'ARS':'symbol':'1.0-0' }}</span>
+            </div>
+
+            <button mat-stroked-button class="elegant-btn" (click)="irAReservar()">Agendar Turno</button>
+        </div>
+
+        <div class="elegant-card tirada-cartas">
+            <div class="card-icon">✦</div>
+            <h3 class="card-title">Tirada de Cartas</h3>
+            <p class="card-subtitle">60 minutos • Online</p>
+            
+            <p class="card-description">
+            Lectura orientativa para aportar claridad sobre situaciones específicas de trabajo, amor o salud.
+            </p>
+            
+            <div class="price-box">
+            <span class="usd-price">USD {{ precioUsd }}</span>
+            <span class="ars-price" *ngIf="precioArs > 0">Aprox. ARS {{ precioArs | currency:'ARS':'symbol':'1.0-0' }}</span>
+            <!-- <span class="ars-price" *ngIf="precioArs > 0">Aprox. ARS {{ precioArs }}</span> -->
+            </div>
+
+            <button mat-stroked-button class="elegant-btn" (click)="irAReservar()">Agendar Turno</button>
+        </div>
+
+    </div>
+
+    <div class="post-diagnostic-section">
+      <h3 class="subsection-title">Procesos de Acompañamiento</h3>
+      <p class="subtitle-note">Estos trabajos se recomiendan y cotizan únicamente luego de realizar el Diagnóstico Espiritual previo.</p>
+      
+      <ul class="process-list">
+        <li><span>Apertura de caminos (Trabajo, dinero, proyectos)</span></li>
+        <li><span>Salud y bienestar energético</span></li>
+        <li><span>Amor, vínculos y armonización emocional</span></li>
+        <li><span>Limpieza y protección energética</span></li>
+      </ul>
+    </div>
+
+  </div>
+</section>

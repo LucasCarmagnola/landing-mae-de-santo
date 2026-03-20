@@ -1,0 +1,74 @@
+.footer-section {
+  background-color: #FAF8F5; /* Beige suave de fondo, igual que la sección About */
+  border-top: 1px solid #EAEAEA;
+  padding: 30px 0; /* Espaciado interno arriba y abajo */
+  color: #4A4A4A;
+  font-size: 0.9rem;
+  font-weight: 300; /* Letra finita */
+}
+
+/* --- MOBILE FIRST (Estilos base para celulares) --- */
+.footer-container {
+  display: flex;
+  flex-direction: column; /* Todo apilado uno abajo del otro */
+  align-items: center;    /* Centrado horizontalmente */
+  text-align: center;
+  gap: 15px;               /* Espacio entre los bloques */
+}
+
+.footer-brand {
+  font-weight: 400;
+  color: #2C3E2D; /* Verde oscuro sutil */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+
+.legal-notice {
+  margin: 0;
+  font-style: italic; /* Texto legal en cursiva, más sutil */
+  color: #666;
+  max-width: 300px; /* Evitamos que el texto legal sea muy ancho en mobile */
+  font-size: 0.8rem;
+}
+
+/* Estilos para tu link de desarrollador */
+.dev-credit a {
+  color: #D4AF37; /* Dorado suave para el link */
+  text-decoration: none; /* Sacamos el subrayado feo por defecto */
+  font-weight: 400;
+  transition: border-bottom 0.3s ease;
+  border-bottom: 1px solid transparent; /* Reservamos el espacio para el borde inferior */
+}
+
+/* Efecto hover elegante al pasar el mouse */
+.dev-credit a:hover {
+  border-bottom: 1px solid #D4AF37; /* Aparece un subrayado dorado suave */
+}
+
+/* --- RESPONSIVE (Ajustes para Tablets y PC) --- */
+@media (min-width: 768px) {
+  .footer-container {
+    padding: 0;
+    flex-direction: row;            /* Ponemos todo en fila */
+    justify-content: space-between; /* Distribuimos: Izquierda, Centro, Derecha */
+    text-align: left;
+    align-items: center;
+    gap: 0;
+  }
+
+  .footer-legal {
+    flex: 1; /* El texto legal ocupa el centro */
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+  }
+  
+  .legal-notice {
+    
+  }
+
+  .footer-brand, .footer-credit {
+    
+  }
+}

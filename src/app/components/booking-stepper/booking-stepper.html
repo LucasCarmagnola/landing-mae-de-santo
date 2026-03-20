@@ -1,0 +1,152 @@
+<section class="stepper-section">
+  <div class="stepper-container">
+    <h2 class="section-title">Reserva tu Turno</h2>
+    <div class="divider"></div>
+
+    <mat-stepper orientation="vertical" [linear]="true" #stepper>
+      
+      <mat-step [stepControl]="step1Form" errorMessage="Selecciona un servicio">
+        <form [formGroup]="step1Form">
+          <ng-template matStepLabel>Elige el servicio</ng-template>
+          
+          <mat-radio-group formControlName="servicio" class="radio-group">
+            <mat-radio-button value="Diagnóstico Espiritual">Diagnóstico Espiritual (100 USD)</mat-radio-button>
+            <mat-radio-button value="Tirada de Cartas">Tirada de Cartas (100 USD)</mat-radio-button>
+          </mat-radio-group>
+          
+          <div class="step-actions">
+            <button mat-flat-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="step2Form" errorMessage="Selecciona tu país">
+        <form [formGroup]="step2Form">
+          <ng-template matStepLabel>¿Desde dónde te conectas?</ng-template>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>País / Zona Horaria</mat-label>
+            <mat-select formControlName="timezone" (selectionChange)="actualizarHorarios()">
+              <mat-option *ngFor="let pais of paisesDisponibles" [value]="pais.id">
+                {{ pais.nombre }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <div class="step-actions">
+            <button mat-button matStepperPrevious>Atrás</button>
+            <button mat-flat-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="step3Form">
+        <form [formGroup]="step3Form">
+          <ng-template matStepLabel>Fecha y Hora</ng-template>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Elige una fecha</mat-label>
+            <input matInput 
+                  [matDatepicker]="picker" 
+                  formControlName="fecha" 
+                  [min]="fechaMinima"
+                  [matDatepickerFilter]="filtroFinesDeSemana"
+                  (dateChange)="actualizarHorarios()" 
+                  readonly>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Horarios disponibles</mat-label>
+            <mat-select formControlName="hora">
+              <mat-option *ngFor="let turnoObj of horariosDisponibles" [value]="turnoObj">
+                {{ turnoObj.local }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="step-actions">
+            <button mat-button matStepperPrevious>Atrás</button>
+            <button mat-flat-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="step4Form">
+        <form [formGroup]="step4Form">
+          <ng-template matStepLabel>Tus Datos</ng-template>
+          
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Nombre Completo</mat-label>
+            <input matInput formControlName="nombre">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput type="email" formControlName="email">
+          </mat-form-field>
+
+          <div class="phone-input-group">
+  
+            <mat-form-field appearance="outline" class="select-code">
+              <mat-label>Cód.</mat-label>
+              <mat-select formControlName="codigoPais">
+                <mat-select-trigger>
+                  {{ step4Form.get('codigoPais')?.value }}
+                </mat-select-trigger>
+                <mat-option *ngFor="let pais of paisesDisponibles" [value]="pais.codigoTel">
+                  {{ pais.nombre }} ({{ pais.codigoTel }})
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="input-phone">
+              <mat-label>Número de WhatsApp</mat-label>
+              <input matInput type="tel" formControlName="whatsapp" placeholder="Ej: 9 11 2345 6789" (keypress)="soloNumeros($event)">
+              <mat-error *ngIf="step4Form.get('whatsapp')?.hasError('pattern')">
+                Solo se permiten números
+              </mat-error>
+            </mat-form-field>
+            
+          </div>
+
+          <div class="step-actions">
+            <button mat-button matStepperPrevious>Atrás</button>
+            <button mat-flat-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Confirmación y Pago</ng-template>
+        
+        <div class="summary-box">
+          <h3>Resumen de tu turno</h3>
+          <p><strong>Servicio:</strong> {{ step1Form.value.servicio || '...' }}</p>
+          
+          <p><strong>Total a pagar:</strong> USD {{ precioUsd }} 
+            <span *ngIf="precioArs > 0"> (Aprox. {{ precioArs | currency:'ARS':'symbol':'1.0-0' }})</span>
+          </p>
+          
+          <div class="payment-info">
+            <p><strong>Datos para el pago:</strong></p>
+            <p>Wise: correo&#64;wise.com</p>
+            <p>Alias Banco (Argentina): mae.santo.turnos</p>
+          </div>
+        </div>
+
+        <div class="info-warning">
+          <p><strong>⚠️ Importante:</strong> Al hacer clic en confirmar, tu horario quedará pre-reservado y serás redirigido a WhatsApp.</p>
+          <p>Tendrás un plazo máximo de <strong>2 horas</strong> para enviar el comprobante de pago. De lo contrario, el sistema liberará el turno automáticamente.</p>
+        </div>
+
+        <div class="step-actions confirm-action">
+          <button mat-button matStepperPrevious>Atrás</button>
+          <button mat-flat-button color="accent" (click)="confirmarTurno()">Confirmar y Enviar Comprobante</button>
+        </div>
+      </mat-step>
+
+    </mat-stepper>
+  </div>
+</section>

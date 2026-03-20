@@ -1,0 +1,42 @@
+.about-section {
+  background-color: #FAF8F5; /* Beige súper claro y elegante */
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #2C3E2D; /* Un verde muy oscuro y sutil en lugar de negro puro */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+/* El detallito dorado elegante */
+.divider {
+  height: 2px;
+  width: 60px;
+  background-color: #D4AF37; /* Dorado suave */
+  margin: 0 auto 30px auto;
+}
+
+.lead-text {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #4A4A4A;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.sub-text {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #666;
+  font-style: italic;
+}

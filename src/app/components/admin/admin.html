@@ -1,0 +1,70 @@
+<div class="admin-layout">
+  <header class="admin-header">
+    <div class="header-content">
+      <h2>Panel de Gestión</h2>
+      <button mat-stroked-button color="warn" (click)="salir()">Salir</button>
+    </div>
+  </header>
+
+  <mat-tab-group backgroundColor="primary" color="accent" class="admin-tabs">
+    
+    <mat-tab label="Pendientes ({{ turnosPendientes.length }})">
+      <div class="tab-content">
+        
+        <p *ngIf="turnosPendientes.length === 0" class="empty-msg">No hay turnos pendientes de confirmación.</p>
+
+        <mat-card class="turno-card pendiente-card" *ngFor="let turno of turnosPendientes">
+          <mat-card-header>
+            <div class="expiration-badge" [ngClass]="{'vencido-badge': turno.estaVencido}">
+                ⏳ {{ turno.textoTiempo }}
+            </div>
+            <mat-card-title>{{ turno.cliente.nombre }}</mat-card-title>
+            <mat-card-subtitle>{{ turno.servicio }}</mat-card-subtitle>
+          </mat-card-header>
+          
+          <mat-card-content>
+            <p><strong>Día:</strong> {{ turno.fechaArgentina | date }}</p>
+            <p><strong>Hora Arg:</strong> {{ turno.horaArgentina}}</p>
+            <p><strong>Hora Cliente:</strong> {{ turno.horaReservaLocal }} </p>
+            <p><strong>Email:</strong> {{ turno.cliente.email }}</p>
+            <p><strong>WhatsApp:</strong> {{ turno.cliente.telefono }}</p>
+          </mat-card-content>
+
+          <mat-card-actions class="card-actions">
+            <button mat-button color="warn" (click)="cancelar(turno.id)">Liberar Turno</button>
+            <button mat-flat-button color="primary" (click)="confirmar(turno.id)">Confirmar Pago</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Agenda ({{ turnosConfirmados.length }})">
+      <div class="tab-content">
+        
+        <p *ngIf="turnosConfirmados.length === 0" class="empty-msg">No tienes turnos confirmados en agenda.</p>
+
+        <mat-card class="turno-card confirmado-card" *ngFor="let turno of turnosConfirmados">
+          <div class="status-indicator">Confirmado ✅</div>
+          
+          <mat-card-header>
+            <mat-card-title>{{ turno.cliente.nombre }}</mat-card-title>
+            <mat-card-subtitle>{{ turno.servicio }}</mat-card-subtitle>
+          </mat-card-header>
+          
+          <mat-card-content>
+            <p><strong>Día:</strong> {{ turno.fechaArgentina | date }}</p>
+            <p><strong>Tu hora (Arg):</strong> {{ turno.horaArgentina }}</p>
+            <p><strong>Hora Cliente:</strong> {{ turno.horaReservaLocal }} ({{ turno.zonaHorariaCliente }})</p>
+          </mat-card-content>
+
+          <mat-card-actions class="card-actions-single">
+            <a mat-stroked-button color="primary" href="https://wa.me/{{ turno.cliente.telefono }}" target="_blank">
+              Contactar por WhatsApp
+            </a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>

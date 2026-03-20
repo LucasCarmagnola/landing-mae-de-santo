@@ -1,0 +1,119 @@
+.admin-layout {
+  min-height: 100vh;
+  background-color: #F4F7F4; /* Fondo gris/verde súper clarito */
+}
+
+.admin-header {
+  background-color: #2C3E2D; /* Verde oscuro institucional */
+  color: white;
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-content h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* Forzar que las pestañas ocupen todo el ancho en mobile */
+::ng-deep .mat-mdc-tab-header {
+  background-color: #FFFFFF !important;
+}
+
+.tab-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.empty-msg {
+  text-align: center;
+  color: #666;
+  margin-top: 40px;
+  font-style: italic;
+}
+
+.turno-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+  position: relative;
+}
+
+.pendiente-card {
+  border-left: 5px solid #D4AF37; /* Detalle dorado para los pendientes */
+}
+
+.confirmado-card {
+  border-left: 5px solid #8FA88F; /* Detalle verde para los confirmados */
+}
+
+mat-card-content p {
+  margin: 5px 0;
+  color: #4A4A4A;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px 16px;
+  background-color: #FAFAFA;
+  border-top: 1px solid #EEE;
+}
+
+.card-actions-single {
+  display: flex;
+  justify-content: center;
+  padding: 10px 16px;
+}
+
+.status-indicator {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #E8F5E9;
+  color: #2E7D32;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* Cartelito de tiempo restante */
+.expiration-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #FFF3E0; /* Naranja clarito */
+  color: #E65100;            /* Naranja oscuro */
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* Cuando ya pasaron las 4 horas */
+.expiration-badge.vencido-badge {
+  background-color: #FFEBEE; /* Rojo clarito */
+  color: #C62828;            /* Rojo oscuro */
+  animation: parpadeoAlerta 2s infinite;
+}
+
+@keyframes parpadeoAlerta {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}

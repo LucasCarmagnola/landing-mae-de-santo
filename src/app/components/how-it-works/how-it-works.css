@@ -1,0 +1,81 @@
+.hiw-section {
+  background-color: #FFFFFF; /* Fondo blanco para contrastar con el beige anterior */
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hiw-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #2C3E2D;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.divider {
+  height: 2px;
+  width: 60px;
+  background-color: #D4AF37;
+  margin: 0 auto 30px auto;
+}
+
+.hiw-warning {
+  background-color: #F4F7F4; /* Un verde extra suave de fondo */
+  border-left: 4px solid #8FA88F; /* Verde suave para enmarcar */
+  padding: 20px;
+  margin-bottom: 40px;
+  border-radius: 4px;
+  color: #333;
+}
+
+.hiw-warning p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+}
+
+/* Grilla de pasos Mobile First */
+.steps-grid {
+  display: flex;
+  flex-direction: column; /* Apilados en celular */
+  gap: 20px;
+}
+
+.step-card {
+  padding: 20px;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  background-color: #FAFAFA;
+  transition: transform 0.3s ease;
+}
+
+.step-number {
+  display: block;
+  font-size: 2rem;
+  color: #D4AF37; /* Dorado */
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.step-card h3 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #4A4A4A;
+  margin: 0;
+}
+
+/* En pantallas más grandes (PC/Tablet), los ponemos en fila */
+@media (min-width: 768px) {
+  .steps-grid {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .step-card {
+    flex: 1; /* Ocupan el mismo ancho */
+  }
+}
