@@ -20,6 +20,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 15px;
+  line-height: 1.2
 }
 
 .divider {
@@ -102,4 +103,29 @@ form{
 
 .input-phone {
   flex: 1; /* El input del número ocupa todo el espacio restante */
+}
+
+@media (max-width: 600px) {
+  
+  /* Apilamos los botones del último paso */
+  .confirm-action {
+    flex-direction: column-reverse; /* Pone el botón de confirmar arriba y el de atrás abajo */
+    gap: 12px; /* Espacio entre los dos botones */
+  }
+
+  /* Hacemos que ocupen todo el ancho y se adapten al texto */
+  .confirm-action button {
+    width: 100%;
+    height: auto; /* Le quitamos el alto fijo por si el texto necesita bajar */
+    min-height: 48px; /* Tamaño ideal para tocar con el pulgar */
+    padding: 10px; /* Le damos aire interno */
+  }
+
+  /* Le damos permiso al texto interno del botón para que baje de renglón si la pantalla es ultra chica */
+  .confirm-action button ::ng-deep .mdc-button__label {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+  }
+  
 }

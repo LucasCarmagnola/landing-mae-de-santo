@@ -6,11 +6,17 @@
   padding: 0 16px; /* Márgenes seguros para pantallas chicas */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   height: 7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .brand-name {
-  font-weight: 500;
   font-size: 1.2rem;
+  font-weight: 300;
+  color: #898153;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .book-btn {
