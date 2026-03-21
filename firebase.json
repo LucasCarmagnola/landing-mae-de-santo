@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/landing-page-cecilia",
+    "public": "dist/landing-page-cecilia/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
