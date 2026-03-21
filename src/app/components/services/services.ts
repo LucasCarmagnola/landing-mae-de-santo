@@ -10,7 +10,7 @@ import { Dolar } from '../../services/dolar';
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, ScrollRevealDirective, CommonModule,],
+  imports: [MatCardModule, MatButtonModule, CommonModule,],
   templateUrl: './services.html',
   styleUrl: './services.css'
 })
