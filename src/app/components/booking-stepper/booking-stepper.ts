@@ -44,7 +44,7 @@ export class BookingStepper implements OnInit {
   private snackBar = inject(MatSnackBar); // <-- AGREGADO: El servicio para mostrar mensajitos
 
   precioUsd = 100;
-  precioArs = 0;
+  precioArs = 80000;
   
   // Paso 1: Elegir el servicio
   step1Form: FormGroup = this.fb.group({

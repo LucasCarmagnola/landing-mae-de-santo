@@ -125,8 +125,8 @@
           <h3>Resumen de tu turno</h3>
           <p><strong>Servicio:</strong> {{ step1Form.value.servicio || '...' }}</p>
           
-          <p><strong>Total a pagar:</strong> USD {{ precioUsd }} 
-            <span *ngIf="precioArs > 0"> (Aprox. {{ precioArs | currency:'ARS':'symbol':'1.0-0' }})</span>
+          <p><strong>Total a pagar:</strong> 
+            <span> {{ precioArs | currency:'ARS ':'symbol':'1.0-0' }}</span>
           </p>
           
           <div class="payment-info">
