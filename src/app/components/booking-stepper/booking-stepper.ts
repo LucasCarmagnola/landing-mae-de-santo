@@ -140,7 +140,7 @@ export class BookingStepper implements OnInit {
     try {
       await this.turnoService.guardarTurno(datosParaFirebase);
 
-      const textoPrecio =`$${this.precioArs} ARS)`
+      const textoPrecio =`$${this.precioArs} ARS`
       const mensaje = `Hola! Acabo de reservar un turno para ${servicio}.
             👤 A nombre de: ${nombre}.
             🗓️ Fecha y Hora: ${fechaStrVisual} a las ${horaLocal}.
