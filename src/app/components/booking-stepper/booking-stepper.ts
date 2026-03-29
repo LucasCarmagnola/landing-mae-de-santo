@@ -39,7 +39,7 @@ export class BookingStepper implements OnInit {
   @ViewChild(MatStepper) stepper!: MatStepper; // <-- AGREGADO: Nos permite controlar el Stepper desde el código
 
   private fb = inject(FormBuilder);
-  private dolarService = inject(Dolar);
+  //private dolarService = inject(Dolar);
   private turnoService = inject(TurnoService);
   private snackBar = inject(MatSnackBar); // <-- AGREGADO: El servicio para mostrar mensajitos
 
@@ -48,7 +48,7 @@ export class BookingStepper implements OnInit {
   
   // Paso 1: Elegir el servicio
   step1Form: FormGroup = this.fb.group({
-    servicio: ['', Validators.required]
+    servicio: ['Diagnostico Espiritual', Validators.required]
   });
 
   // Paso 2: Zona Horaria
