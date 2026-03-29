@@ -89,11 +89,11 @@ export class BookingStepper implements OnInit {
 
   ngOnInit() {
     // Apenas carga el stepper, buscamos la cotización
-    this.dolarService.getDolarBlue().subscribe({
-      next: (data) => {
-        this.precioArs = this.precioUsd * data.venta;
-      }
-    });
+    // this.dolarService.getDolarBlue().subscribe({
+    //   next: (data) => {
+    //     this.precioArs = this.precioUsd * data.venta;
+    //   }
+    // });
   }
 
   soloNumeros(event: KeyboardEvent) {
@@ -146,7 +146,7 @@ export class BookingStepper implements OnInit {
             🗓️ Fecha y Hora: ${fechaStrVisual} a las ${horaLocal}.
             💰 A continuación te envío el comprobante de pago por ${textoPrecio}.`;
 
-      const numeroWhatsApp = '5491124095148'; 
+      const numeroWhatsApp = '5491132157197'; 
       const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
       // 1. MOSTRAR MENSAJE DE ÉXITO PRIMERO

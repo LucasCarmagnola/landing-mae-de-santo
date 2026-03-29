@@ -16,30 +16,30 @@ import { Dolar } from '../../services/dolar';
 })
 export class ServicesComponent {
   precioUsd = 100;
-  precioArs = 0; 
-  private dolarService = inject(Dolar);
+  precioArs = 80000; 
+  //private dolarService = inject(Dolar);
 
 
   ngOnInit() {
-    this.obtenerCotizacion();
+    //this.obtenerCotizacion();
   }
 
-  obtenerCotizacion() {
-    this.dolarService.getDolarBlue().subscribe({
-      next: (data) => {
-        // La API devuelve un objeto con 'compra' y 'venta'. Usamos 'venta'.
-        const valorDolar = data.venta;
+  // obtenerCotizacion() {
+  //   this.dolarService.getDolarBlue().subscribe({
+  //     next: (data) => {
+  //       // La API devuelve un objeto con 'compra' y 'venta'. Usamos 'venta'.
+  //       const valorDolar = data.venta;
         
-        // Calculamos el precio en pesos
-        this.precioArs = this.precioUsd * valorDolar;
-      },
-      error: (err) => {
-        console.error('No se pudo conectar con DolarAPI', err);
-        // Si la API se cae, el precioArs queda en 0 y el HTML 
-        // automáticamente oculta la línea en pesos gracias al *ngIf="precioArs > 0"
-      }
-    });
-  }
+  //       // Calculamos el precio en pesos
+  //       this.precioArs = this.precioUsd * valorDolar;
+  //     },
+  //     error: (err) => {
+  //       console.error('No se pudo conectar con DolarAPI', err);
+  //       // Si la API se cae, el precioArs queda en 0 y el HTML 
+  //       // automáticamente oculta la línea en pesos gracias al *ngIf="precioArs > 0"
+  //     }
+  //   });
+  // }
 
   irAReservar() {
     const seccionTurnos = document.getElementById('seccion-reserva');

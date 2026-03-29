@@ -63,7 +63,8 @@
 .card-icon {
   color: #fac515; /* El mismo dorado de las viñetas */
   font-size: 1.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .card-title {
@@ -78,7 +79,7 @@
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin: 0 0 20px 0;
+  margin: 8px 0 20px 0;
 }
 
 .card-description {
@@ -103,7 +104,7 @@
 }
 
 .ars-price {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: #f9f9f9;
   font-style: italic;
 }
@@ -208,4 +209,12 @@
   position: absolute;
   left: 0;
   color: #D4AF37;
+}
+
+.separador{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #2C3E2D;
+  margin: 10px 0;
 }
