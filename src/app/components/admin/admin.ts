@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TurnoService } from '../../services/turno';
 import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
+import { ReseniasService, Resenia } from '../../services/resenias';
 
 // Angular Material
 import { MatTabsModule } from '@angular/material/tabs';
@@ -23,18 +24,24 @@ export class AdminComponent implements OnInit {
   private authService = inject(AuthService);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
+  private reseniasService = inject(ReseniasService);
 
   turnosPendientes: any[] = [];
   turnosConfirmados: any[] = [];
+  
+  turnosFinalizados: any[] = [];
+  resenias: Resenia[] = [];
 
   ngOnInit() {
-    this.cargarTurnos();
+    this.cargarDatos();
   }
 
-  async cargarTurnos() {
+  async cargarDatos() {
     try {
       this.turnosPendientes = await this.turnoService.obtenerTurnosPorEstado('pendiente');
       this.turnosConfirmados = await this.turnoService.obtenerTurnosPorEstado('confirmado');
+
+      console.log('turnos pendientes:', this.turnosPendientes);
       
       // 1. ORDENAR AGENDA (Confirmados): Por fecha y hora (los más próximos arriba)
       this.turnosConfirmados.sort((a, b) => {
@@ -58,6 +65,9 @@ export class AdminComponent implements OnInit {
         turno.textoTiempo = infoTiempo.texto;
         turno.estaVencido = infoTiempo.vencido;
       });
+
+      this.turnosFinalizados = await this.turnoService.obtenerTurnosPorEstado('finalizado');
+      this.resenias = await this.reseniasService.obtenerResenias();
 
     } catch (error) {
       console.error("Error al cargar turnos", error);
@@ -121,7 +131,7 @@ export class AdminComponent implements OnInit {
     try {
       await this.turnoService.confirmarTurno(id);
       this.snackBar.open('Turno confirmado con éxito ✅', 'Cerrar', { duration: 3000 });
-      this.cargarTurnos(); // Recargamos las listas para que pase de una pestaña a la otra
+      this.cargarDatos(); // Recargamos las listas para que pase de una pestaña a la otra
     } catch (error) {
       this.snackBar.open('Error al confirmar', 'Cerrar', { duration: 3000 });
     }
@@ -132,7 +142,7 @@ export class AdminComponent implements OnInit {
       try {
         await this.turnoService.eliminarTurno(id);
         this.snackBar.open('Turno liberado 🗑️', 'Cerrar', { duration: 3000 });
-        this.cargarTurnos();
+        this.cargarDatos();
       } catch (error) {
         this.snackBar.open('Error al eliminar', 'Cerrar', { duration: 3000 });
       }
@@ -143,4 +153,37 @@ export class AdminComponent implements OnInit {
     await this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  async finalizar(idTurno: string) {
+    if(confirm('¿Estás seguro de marcar este turno como finalizado?')) {
+      try{
+        await this.turnoService.finalizarTurno(idTurno);
+        this.snackBar.open('Turno finalizado con éxito ✅', 'Cerrar', { duration: 3000 });
+        this.cargarDatos(); 
+      } catch(error){
+        this.snackBar.open('Error al finalizar', 'Cerrar', { duration: 3000 });
+      }
+    }
+  }
+
+  async borrarResenia(idResenia: string | undefined) {
+    // 1. Chequeo de seguridad: si por alguna razón extraña llega a ser undefined, cortamos acá.
+    if (!idResenia) {
+      console.error('Error: Intentaste borrar una reseña sin ID.');
+      return; 
+    }
+
+    // 2. A partir de esta línea, TypeScript ya sabe que idResenia es 100% un string válido.
+    if(confirm('¿Estás seguro de eliminar esta reseña? No se puede deshacer.')) {
+      try{
+        await this.reseniasService.eliminarResenia(idResenia); 
+        this.snackBar.open('Reseña eliminada 🗑️', 'Cerrar', { duration: 3000 });
+        this.cargarDatos(); // Recargamos la lista para que desaparezca
+
+      }catch(error){
+        this.snackBar.open('Error al eliminar', 'Cerrar', { duration: 3000 });
+      }
+    }
+  }
+
 }

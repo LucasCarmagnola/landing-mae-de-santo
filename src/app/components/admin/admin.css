@@ -117,3 +117,37 @@ mat-card-content p {
   50% { opacity: 0.6; }
   100% { opacity: 1; }
 }
+
+/* --- Estilos para Turnos Finalizados --- */
+.finalizado-card {
+  border-left: 5px solid #9E9E9E; /* Gris neutral para los que ya pasaron */
+  opacity: 0.85; /* Un poco de transparencia para denotar que está inactivo */
+}
+
+.status-indicator.finalizado-badge {
+  background-color: #F5F5F5;
+  color: #616161;
+}
+
+/* --- Estilos para la pestaña de Reseñas --- */
+.resenia-card {
+  border-left: 5px solid #607D8B; /* Un azul grisáceo distinto a los turnos */
+}
+
+.resenia-avatar {
+  background-color: #ECEFF1;
+  color: #455A64;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 50%;
+}
+
+.resenia-texto {
+  font-style: italic;
+  color: #555;
+  margin-top: 10px;
+  line-height: 1.5;
+}

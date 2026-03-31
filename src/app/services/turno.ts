@@ -73,6 +73,11 @@ export class TurnoService {
     const turnoRef = doc(this.firestore, 'turnos', idTurno);
     await deleteDoc(turnoRef);
   }
+
+  async finalizarTurno(idTurno: string) {
+    const turnoRef = doc(this.firestore, 'turnos', idTurno);
+    await updateDoc(turnoRef, { estado: 'finalizado' });
+  }
   
 
 }

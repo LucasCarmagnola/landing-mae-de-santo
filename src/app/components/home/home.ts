@@ -6,10 +6,12 @@ import { BookingStepper } from '../booking-stepper/booking-stepper';
 import { About } from '../about/about';
 import { HowItWorks } from '../how-it-works/how-it-works';
 import { ServicesComponent } from '../services/services';
+import {  ComentariosComponent } from '../comentarios/comentarios';
+import { CarruselReseniasComponent } from '../carrusel-resenias/carrusel-resenias';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, Navbar, Footer, BookingStepper, About, HowItWorks, ServicesComponent],
+  imports: [Hero, Navbar, Footer, BookingStepper, About, HowItWorks, ServicesComponent, ComentariosComponent, CarruselReseniasComponent],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

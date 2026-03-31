@@ -1,0 +1,50 @@
+<div class="comentarios-container">
+  
+  <div class="formulario-section">
+    <h3>Dejanos tu testimonio</h3>
+    <form [formGroup]="reseniaForm" (ngSubmit)="enviarResenia()">
+      
+      <div class="form-group">
+        <label for="nombre">Nombre (Opcional)</label>
+        <input type="text" id="nombre" formControlName="nombre" placeholder="Ej: Maria">
+      </div>
+
+      <div class="form-group">
+        <label for="mensaje">Tu experiencia *</label>
+        <textarea id="mensaje" formControlName="mensaje" rows="4" placeholder="¿Cómo te sentiste con el servicio?..." maxlength="250"></textarea>
+        
+        <small class="contador">
+          {{ reseniaForm.get('mensaje')?.value?.length || 0 }} / 250
+        </small>
+      </div>
+
+      <button type="submit" [disabled]="reseniaForm.invalid || enviando">
+        {{ enviando ? 'Publicando...' : 'Publicar Reseña' }}
+      </button>
+
+    </form>
+  </div>
+
+  <div class="carrusel-section" *ngIf="resenias.length > 0">
+    <div class="carrusel-track">
+      
+      <div class="resenia-card" *ngFor="let resenia of resenias">
+        <div class="card-header">
+          <div class="avatar">{{ resenia.nombre.charAt(0) | uppercase }}</div>
+          <h4>{{ resenia.nombre }}</h4>
+        </div>
+        <p class="mensaje">"{{ resenia.mensaje }}"</p>
+      </div>
+
+      <div class="resenia-card" *ngFor="let resenia of resenias">
+        <div class="card-header">
+          <div class="avatar">{{ resenia.nombre.charAt(0) | uppercase }}</div>
+          <h4>{{ resenia.nombre }}</h4>
+        </div>
+        <p class="mensaje">"{{ resenia.mensaje }}"</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>

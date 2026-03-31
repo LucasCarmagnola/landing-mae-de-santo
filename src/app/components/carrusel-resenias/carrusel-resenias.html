@@ -1,0 +1,22 @@
+<div class="carrusel-wrapper" *ngIf="resenias.length > 0">
+  <h3 class="titulo-testimonios">Lo que dicen quienes nos visitaron</h3>
+  
+  <div class="carrusel-section">
+    <div class="carrusel-track">
+      
+      <ng-container *ngFor="let i of [1, 2]">
+        <div class="resenia-card" *ngFor="let resenia of resenias">
+          
+          <div class="card-header">
+            <div class="avatar">{{ resenia.nombre.charAt(0) | uppercase }}</div>
+            <h4>{{ resenia.nombre }}</h4>
+          </div>
+          
+          <p class="mensaje">"{{ resenia.mensaje }}"</p>
+          
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</div>

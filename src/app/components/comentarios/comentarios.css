@@ -1,0 +1,185 @@
+.comentarios-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* --- Estilos del Formulario --- */
+.formulario-section {
+  background: #fafafa;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  margin-bottom: 3rem;
+  border: 1px solid #eee;
+}
+
+.formulario-section h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+input, textarea {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #d4af37; /* Tono cálido/dorado */
+}
+
+textarea {
+  resize: vertical;
+}
+
+.contador {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 4px;
+}
+
+button {
+  background-color: #d4af37; 
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+button:hover:not(:disabled) {
+  background-color: #bfa035;
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- Estilos del Carrusel Automático --- */
+.carrusel-section {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+/* Efecto esfumado a los costados para que las cartas aparezcan suavemente */
+.carrusel-section::before,
+.carrusel-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carrusel-section::before {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.carrusel-section::after {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+}
+
+.carrusel-track {
+  display: inline-flex;
+  gap: 20px;
+  /* 30s es la velocidad, ajustalo a gusto. Linear hace que la velocidad sea constante */
+  animation: scroll 30s linear infinite;
+}
+
+.carrusel-track:hover {
+  animation-play-state: paused; /* Frena si el usuario quiere leer */
+}
+
+.resenia-card {
+  background: white;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 320px;
+  min-width: 320px; /* Clave para que no se aplasten */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  white-space: normal; /* Vuelve el texto a comportamiento normal dentro de la carta */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  background-color: #f0e6d2; /* Fondo suave para la inicial */
+  color: #d4af37;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.card-header h4 {
+  margin: 0;
+  color: #222;
+  font-size: 1.1rem;
+}
+
+.mensaje {
+  margin: 0;
+  color: #555;
+  font-style: italic;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Animación que mueve el track hacia la izquierda */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Mueve exactamente el 50% de su ancho total (porque la lista está duplicada) más la mitad del gap */
+    transform: translateX(calc(-50% - 10px));
+  }
+}
